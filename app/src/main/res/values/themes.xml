@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MLEntertainment" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/yellow_800</item>
+        <item name="colorPrimaryVariant">@color/yellow_800</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/light_blue_600</item>
+        <item name="colorSecondaryVariant">@color/light_blue_800</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- SplashScreen ************************************************************************** -->
+    <style name="SplashScreen" parent="Theme.MLEntertainment">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+</resources>

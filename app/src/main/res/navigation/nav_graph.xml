@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/categoryItemsFragment"
+        android:name="cl.cdum.mlentertainment.ui.categoryItems.CategoryItemsFragment"
+        android:label="CategoryItemsFragment"
+        tools:layout="@layout/fragment_category_items">
+        <argument
+            android:name="searchCriteria"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_categoryItemsFragment_to_categoryItemDetailFragment"
+            app:destination="@id/categoryItemDetailFragment" />
+        <action
+            android:id="@+id/action_categoryItemsFragment_to_apiServiceErrorFragment"
+            app:destination="@id/apiServiceErrorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryItemDetailFragment"
+        android:name="cl.cdum.mlentertainment.ui.categoryItemDetail.CategoryItemDetailFragment"
+        android:label="@string/item_description_label"
+        tools:layout="@layout/fragment_category_item_detail">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_categoryItemDetailFragment_to_apiServiceErrorFragment"
+            app:destination="@id/apiServiceErrorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="cl.cdum.mlentertainment.ui.home.HomeFragment"
+        android:label="@string/home_label"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_categoryItemDetailFragment"
+            app:destination="@id/categoryItemDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryItemsFragment"
+            app:destination="@id/categoryItemsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_apiServiceErrorFragment"
+            app:destination="@id/apiServiceErrorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/apiServiceErrorFragment"
+        android:name="cl.cdum.mlentertainment.ui.errorView.ApiServiceErrorFragment"
+        android:label="@string/apiservice_error_label"
+        tools:layout="@layout/fragment_api_service_error"/>
+</navigation>
