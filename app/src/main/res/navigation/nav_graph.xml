@@ -6,9 +6,24 @@
     app:startDestination="@id/homeFragment">
 
     <fragment
+        android:id="@+id/homeFragment"
+        android:name="cl.cdum.mlentertainment.ui.home.HomeFragment"
+        android:label="@string/home_label"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_categoryItemDetailFragment"
+            app:destination="@id/categoryItemDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryItemsFragment"
+            app:destination="@id/categoryItemsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_apiServiceErrorFragment"
+            app:destination="@id/apiServiceErrorFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/categoryItemsFragment"
         android:name="cl.cdum.mlentertainment.ui.categoryItems.CategoryItemsFragment"
-        android:label="CategoryItemsFragment"
+        android:label="@string/search_result_label"
         tools:layout="@layout/fragment_category_items">
         <argument
             android:name="searchCriteria"
@@ -33,23 +48,15 @@
             app:destination="@id/apiServiceErrorFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="cl.cdum.mlentertainment.ui.home.HomeFragment"
-        android:label="@string/home_label"
-        tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_categoryItemDetailFragment"
-            app:destination="@id/categoryItemDetailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_categoryItemsFragment"
-            app:destination="@id/categoryItemsFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_apiServiceErrorFragment"
-            app:destination="@id/apiServiceErrorFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/apiServiceErrorFragment"
         android:name="cl.cdum.mlentertainment.ui.errorView.ApiServiceErrorFragment"
         android:label="@string/apiservice_error_label"
-        tools:layout="@layout/fragment_api_service_error"/>
+        tools:layout="@layout/fragment_api_service_error">
+        <argument
+            android:name="exitApplication"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_apiServiceErrorFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

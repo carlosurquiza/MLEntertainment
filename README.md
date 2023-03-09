@@ -1,3 +1,2 @@
 # MLEntertainment
-
-Aplicación de prueba técnica para MercadoLibre
+# Aplicación de prueba técnica para MercadoLibre

@@ -16,6 +16,7 @@ import cl.cdum.mlentertainment.R
 import cl.cdum.mlentertainment.data.model.categoryItems.CategoryItemsData
 import cl.cdum.mlentertainment.data.model.categoryItems.CategoryResult
 import cl.cdum.mlentertainment.databinding.FragmentCategoryItemsBinding
+import cl.cdum.mlentertainment.util.CATEGORY_ID
 import cl.cdum.mlentertainment.util.extensions.gone
 import cl.cdum.mlentertainment.util.extensions.hideKeyboard
 import cl.cdum.mlentertainment.util.extensions.visible
@@ -142,7 +143,9 @@ class CategoryItemsFragment :
         binding.progressBar.gone()
 
         val action =
-            CategoryItemsFragmentDirections.actionCategoryItemsFragmentToApiServiceErrorFragment()
+            CategoryItemsFragmentDirections.actionCategoryItemsFragmentToApiServiceErrorFragment(
+                exitApplication = false
+            )
         findNavController().navigate(action)
     }
 

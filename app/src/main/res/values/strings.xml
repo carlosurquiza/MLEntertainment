@@ -4,8 +4,10 @@
     <string name="item_description_label">Descripción del producto</string>
     <string name="apiservice_error_label">Error de servicio</string>
     <string name="search_text">¿Qué estás buscando?</string>
+    <string name="search_result_label">Resultados de la búsqueda</string>
     <string name="condition">Condición: %1$s</string>
     <string name="available_quantity">%1$s disponible(s)</string>
     <string name="api_service_error_description">Tuvimos inconvenientes inesperados dentro del proceso</string>
+    <string name="exit_application">Salir</string>
     <string name="go_back">Volver al Home</string>
 </resources>

@@ -90,7 +90,9 @@ class CategoryItemDetailFragment : Fragment(R.layout.fragment_category_item_deta
         binding.progressBar.gone()
 
         val action =
-            CategoryItemDetailFragmentDirections.actionCategoryItemDetailFragmentToApiServiceErrorFragment()
+            CategoryItemDetailFragmentDirections.actionCategoryItemDetailFragmentToApiServiceErrorFragment(
+                exitApplication = false
+            )
         findNavController().navigate(action)
     }
 

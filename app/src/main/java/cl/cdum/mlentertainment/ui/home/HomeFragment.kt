@@ -27,8 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment :
     Fragment(R.layout.fragment_home),
-    CategoryItemsAdapter.OnItemClickListener
-{
+    CategoryItemsAdapter.OnItemClickListener {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -180,7 +179,9 @@ class HomeFragment :
     private fun goToApiServiceErrorFragment() {
         binding.progressBar.gone()
 
-        val action = HomeFragmentDirections.actionHomeFragmentToApiServiceErrorFragment()
+        val action = HomeFragmentDirections.actionHomeFragmentToApiServiceErrorFragment(
+            exitApplication = true
+        )
         findNavController().navigate(action)
     }
 
