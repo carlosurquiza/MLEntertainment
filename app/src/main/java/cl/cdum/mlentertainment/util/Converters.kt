@@ -203,4 +203,14 @@ class Converters {
     fun saveSubStatusList(objectToSave: List<SubStatus>?): String? {
         return Gson().toJson(objectToSave)
     }
+
+    @TypeConverter
+    fun restoreVariationList(objectToRestore: String?): List<Variation>? {
+        return Gson().fromJson(objectToRestore, object : TypeToken<List<Variation>?>() {}.type)
+    }
+
+    @TypeConverter
+    fun saveVariationList(objectToSave: List<Variation>?): String? {
+        return Gson().toJson(objectToSave)
+    }
 }

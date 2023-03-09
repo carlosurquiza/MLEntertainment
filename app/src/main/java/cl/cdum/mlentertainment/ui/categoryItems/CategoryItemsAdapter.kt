@@ -10,6 +10,9 @@ import cl.cdum.mlentertainment.R
 import cl.cdum.mlentertainment.data.model.categoryItems.CategoryResult
 import cl.cdum.mlentertainment.databinding.ItemCategoryBinding
 import cl.cdum.mlentertainment.util.extensions.currencyFormat
+import cl.cdum.mlentertainment.util.extensions.gone
+import cl.cdum.mlentertainment.util.extensions.strike
+import cl.cdum.mlentertainment.util.extensions.visible
 import com.bumptech.glide.Glide
 
 class CategoryItemsAdapter(private val listener: OnItemClickListener) :
@@ -50,11 +53,23 @@ class CategoryItemsAdapter(private val listener: OnItemClickListener) :
                     tvId.text = id
                     tvTitle.text = title
                     tvCondition.text = context.getString(R.string.condition, condition)
-                    tvPrice.text = price!!.toLong().currencyFormat()
                     tvAvailableQuantity.text = context.getString(
                         R.string.available_quantity,
                         available_quantity.toString()
                     )
+
+                    val currencyPrice = (price ?: 0).toLong()
+                    val originalPrice = (original_price ?: 0).toLong()
+
+                    if (originalPrice == 0L || originalPrice == currencyPrice) {
+                        tvOriginalPrice.gone()
+                    } else {
+                        tvOriginalPrice.visible()
+                        tvOriginalPrice.text = originalPrice.currencyFormat()
+                        tvOriginalPrice.strike()
+                    }
+
+                    tvPrice.text = currencyPrice.currencyFormat()
                 }
             }
         }

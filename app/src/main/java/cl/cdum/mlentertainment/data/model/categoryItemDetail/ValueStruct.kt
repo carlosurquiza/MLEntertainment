@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ValueStruct(
     @SerializedName("number")
-    val number: Int? = null,
+    val number: Double? = null,
     @SerializedName("unit")
     val unit: String? = null
 )

@@ -24,4 +24,8 @@ class CategoryItemDetailViewModel @Inject constructor(private val repository: Ca
                 mutableLiveData.value = it
             }
         }
+
+    fun getPercentage(totalValue: Long, resultValue: Long): Long {
+        return 100 - (resultValue * 100) / totalValue
+    }
 }

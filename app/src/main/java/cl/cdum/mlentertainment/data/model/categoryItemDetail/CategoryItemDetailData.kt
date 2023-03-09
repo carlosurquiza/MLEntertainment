@@ -62,7 +62,7 @@ data class CategoryItemDetailData(
     @SerializedName("official_store_id")
     val official_store_id: Int? = null,
     @SerializedName("original_price")
-    val original_price: Int? = null,
+    val original_price: Double? = null,
     @SerializedName("parent_item_id")
     val parent_item_id: String? = null,
     @SerializedName("permalink")
@@ -106,7 +106,7 @@ data class CategoryItemDetailData(
     @SerializedName("title")
     val title: String? = null,
     @SerializedName("variations")
-    val variations: List<String>? = null,
+    val variations: List<Variation>? = null,
     @SerializedName("video_id")
     val video_id: String? = null,
     @SerializedName("warnings")

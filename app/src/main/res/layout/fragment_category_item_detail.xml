@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,30 +21,41 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvId"
+            app:layout_constraintTop_toBottomOf="@+id/tvSoldQuantity"
             tools:text="Twice Ready To Be Cd + Libro Nuevo Importado" />
 
         <ImageView
             android:id="@+id/ivPhoto"
             android:layout_width="wrap_content"
-            android:layout_height="150dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="24dp"
             android:scaleType="fitCenter"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWarranty"
             tools:ignore="ContentDescription"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/tvSoldQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="50 vendidos" />
 
         <TextView
             android:id="@+id/tvId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvSoldQuantity"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivPhoto"
+            app:layout_constraintTop_toTopOf="@+id/tvSoldQuantity"
             tools:text="MLA1361706553" />
 
         <TextView
@@ -55,25 +67,56 @@
             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
             tools:text="Condición: new" />
 
-        <TextView
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:textSize="@dimen/title_text_size"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvCondition"
-            app:layout_constraintTop_toBottomOf="@+id/tvWarranty"
-            tools:text="$10.000" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvWarranty"
+            app:layout_constraintTop_toBottomOf="@+id/ivPhoto">
 
-        <TextView
-            android:id="@+id/tvAvailableQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
-            app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-            app:layout_constraintTop_toTopOf="@+id/tvPrice"
-            tools:text="4 disponibles" />
+            <TextView
+                android:id="@+id/tvOriginalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/subtitle_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="$ 82.008" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_xxxl"
+                app:layout_constraintStart_toStartOf="@+id/tvOriginalPrice"
+                app:layout_constraintTop_toBottomOf="@+id/tvOriginalPrice"
+                tools:text="$64.990" />
+
+            <TextView
+                android:id="@+id/tvOffPercentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/green_800"
+                android:textSize="@dimen/subtitle_text_size"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvPrice"
+                app:layout_constraintTop_toBottomOf="@+id/tvPrice"
+                tools:text="20% de descuento" />
+
+            <TextView
+                android:id="@+id/tvAvailableQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvPrice"
+                tools:text="4 disponibles" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/tvWarranty"
@@ -93,7 +136,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/ivPhoto"
+            app:layout_constraintTop_toTopOf="parent"
             tools:visibility="visible" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

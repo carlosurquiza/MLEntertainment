@@ -14,6 +14,7 @@ import cl.cdum.mlentertainment.data.model.categoryItemDetail.CategoryItemDetailD
 import cl.cdum.mlentertainment.databinding.FragmentCategoryItemDetailBinding
 import cl.cdum.mlentertainment.util.extensions.currencyFormat
 import cl.cdum.mlentertainment.util.extensions.gone
+import cl.cdum.mlentertainment.util.extensions.strike
 import cl.cdum.mlentertainment.util.extensions.visible
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -73,15 +74,41 @@ class CategoryItemDetailFragment : Fragment(R.layout.fragment_category_item_deta
                     .load(this!!.secure_thumbnail)
                     .into(ivPhoto)
 
+                tvSoldQuantity.text = getString(R.string.sold_quantity, sold_quantity.toString())
                 tvId.text = id
                 tvTitle.text = title
                 tvCondition.text = getString(R.string.condition, condition)
                 tvWarranty.text = warranty
-                tvPrice.text = price!!.toLong().currencyFormat()
                 tvAvailableQuantity.text = getString(
                     R.string.available_quantity,
                     available_quantity.toString()
                 )
+
+                val currencyPrice = (price ?: 0).toLong()
+                val originalPrice = (original_price ?: 0).toLong()
+
+                if (originalPrice == 0L || originalPrice == currencyPrice) {
+                    tvOriginalPrice.gone()
+                    tvOffPercentage.gone()
+                } else {
+                    val offPercentage = categoryItemDetailViewModel.getPercentage(
+                        totalValue = originalPrice,
+                        resultValue = currencyPrice
+                    )
+
+                    tvOriginalPrice.visible()
+                    tvOffPercentage.visible()
+
+                    tvOriginalPrice.text = originalPrice.currencyFormat()
+                    tvOriginalPrice.strike()
+
+                    tvOffPercentage.text = buildString {
+                        append(offPercentage.toString())
+                        append(getString(R.string.off_percentage))
+                    }
+                }
+
+                tvPrice.text = currencyPrice.currencyFormat()
             }
         }
     }
