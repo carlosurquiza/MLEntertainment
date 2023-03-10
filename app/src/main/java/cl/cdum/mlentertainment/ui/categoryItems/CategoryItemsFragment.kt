@@ -1,6 +1,7 @@
 package cl.cdum.mlentertainment.ui.categoryItems
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import cl.cdum.mlentertainment.data.model.categoryItems.CategoryItemsData
 import cl.cdum.mlentertainment.data.model.categoryItems.CategoryResult
 import cl.cdum.mlentertainment.databinding.FragmentCategoryItemsBinding
 import cl.cdum.mlentertainment.util.CATEGORY_ID
+import cl.cdum.mlentertainment.util.SERVICE_ERROR_TAG
 import cl.cdum.mlentertainment.util.extensions.gone
 import cl.cdum.mlentertainment.util.extensions.hideKeyboard
 import cl.cdum.mlentertainment.util.extensions.visible
@@ -116,6 +118,7 @@ class CategoryItemsFragment :
     }
 
     private fun showErrorView(error: Throwable?) {
+        Log.d(SERVICE_ERROR_TAG, error!!.localizedMessage!!)
         goToApiServiceErrorFragment()
     }
 

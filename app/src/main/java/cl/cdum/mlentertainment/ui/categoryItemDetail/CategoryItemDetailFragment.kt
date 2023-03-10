@@ -1,6 +1,7 @@
 package cl.cdum.mlentertainment.ui.categoryItemDetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import cl.cdum.ccladevelopers.util.Resource
 import cl.cdum.mlentertainment.R
 import cl.cdum.mlentertainment.data.model.categoryItemDetail.CategoryItemDetailData
 import cl.cdum.mlentertainment.databinding.FragmentCategoryItemDetailBinding
+import cl.cdum.mlentertainment.util.SERVICE_ERROR_TAG
 import cl.cdum.mlentertainment.util.extensions.currencyFormat
 import cl.cdum.mlentertainment.util.extensions.gone
 import cl.cdum.mlentertainment.util.extensions.strike
@@ -58,6 +60,7 @@ class CategoryItemDetailFragment : Fragment(R.layout.fragment_category_item_deta
     }
 
     private fun showErrorView(error: Throwable?) {
+        Log.d(SERVICE_ERROR_TAG, error!!.localizedMessage!!)
         goToApiServiceErrorFragment()
     }
 

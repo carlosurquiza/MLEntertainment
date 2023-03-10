@@ -1,6 +1,7 @@
 package cl.cdum.mlentertainment.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +21,7 @@ import cl.cdum.mlentertainment.databinding.FragmentHomeBinding
 import cl.cdum.mlentertainment.ui.categoryItems.CategoryItemsAdapter
 import cl.cdum.mlentertainment.ui.categoryItems.CategoryItemsEvent
 import cl.cdum.mlentertainment.ui.categoryItems.CategoryItemsViewModel
+import cl.cdum.mlentertainment.util.SERVICE_ERROR_TAG
 import cl.cdum.mlentertainment.util.extensions.*
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
@@ -98,7 +100,7 @@ class HomeFragment :
     private fun initObservers() {
         homeViewModel.liveData.observe(viewLifecycleOwner) { result ->
             when (result) {
-                is Resource.Error -> showErrorCategories(result.error)
+                is Resource.Error -> showErrorView(result.error)
                 is Resource.Loading -> showLoadingCategories()
                 is Resource.Success -> showSuccessCategories(result.data)
             }
@@ -120,8 +122,8 @@ class HomeFragment :
 
         categoryItemsViewModel.liveData.observe(viewLifecycleOwner) { result ->
             when (result) {
-                is Resource.Error -> showErrorItems(result.error)
-                is Resource.Loading -> showLoadingItems()
+                is Resource.Error -> showErrorView(result.error)
+                is Resource.Loading -> {}
                 is Resource.Success -> showSuccessItems(result.data)
             }
         }
@@ -146,7 +148,8 @@ class HomeFragment :
         }
     }
 
-    private fun showErrorCategories(error: Throwable?) {
+    private fun showErrorView(error: Throwable?) {
+        Log.d(SERVICE_ERROR_TAG, error!!.localizedMessage!!)
         goToApiServiceErrorFragment()
     }
 
@@ -159,21 +162,13 @@ class HomeFragment :
             tvTitle.text = data!!.name
 
             Glide.with(this@HomeFragment)
-                .load(data!!.picture)
+                .load(data.picture)
                 .into(imageView)
 
             homeCategoryAdapter.submitList(data.children_categories)
 
             categoryItemsViewModel.getCategoryItemsData()
         }
-    }
-
-    private fun showErrorItems(error: Throwable?) {
-        goToApiServiceErrorFragment()
-    }
-
-    private fun showLoadingItems() {
-
     }
 
     private fun goToApiServiceErrorFragment() {
